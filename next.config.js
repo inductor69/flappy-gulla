@@ -2,7 +2,7 @@
 const isProd = process.env.NODE_ENV === "production";
 
 module.exports = {
-  assetPrefix: isProd ? "/flappy/" : "",
+  assetPrefix: isProd ? "/flappy-gulla/" : "",
   images: {
     unoptimized: true,
   },
