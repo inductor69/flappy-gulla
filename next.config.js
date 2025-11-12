@@ -1,12 +1,13 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
+const isGitHubPages = process.env.GITHUB_ACTIONS === "true";
 
 module.exports = {
-  assetPrefix: isProd ? "/flappy-gulla/" : "",
-  basePath: isProd ? "/flappy-gulla" : "",
-  trailingSlash: true,
+  assetPrefix: isGitHubPages ? "/flappy-gulla/" : "",
+  basePath: isGitHubPages ? "/flappy-gulla" : "",
+  trailingSlash: isGitHubPages,
   images: {
     unoptimized: true,
   },
-  output: 'export',
+  output: isGitHubPages ? 'export' : undefined,
 };
