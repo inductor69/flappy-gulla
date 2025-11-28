@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
 import useGame from "../hooks/useGame";
 import useInterval from "../hooks/useInterval";
-export function Bird() {
+
+interface BirdProps {
+  birdImage?: string;
+}
+
+export function Bird({ birdImage = "gulla.png" }: BirdProps) {
   const {
     bird: {
       size: { height, width },
@@ -15,7 +20,7 @@ export function Bird() {
   return (
     <div
       style={{
-        backgroundImage: "url(gulla.png)",
+        backgroundImage: `url(${birdImage})`,
         height,
         width,
         backgroundPosition: "center",
@@ -25,7 +30,7 @@ export function Bird() {
     />
   );
 }
-export default function FlappyBird() {
+export default function FlappyBird({ birdImage }: BirdProps) {
   const {
     isStarted,
     bird: {
@@ -53,7 +58,7 @@ export default function FlappyBird() {
         duration: 0.25,
       }}
     >
-      <Bird />
+      <Bird birdImage={birdImage} />
     </motion.div>
   );
 }
